@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru"> <!-- Язык документа - русский -->
+<head>
+    <meta charset="UTF-8"> <!-- Кодировка UTF-8 для поддержки кириллицы -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трансформеры: Прайм - Карточная Игра</title> <!-- Заголовок страницы -->
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f0f0f0;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    #game-status {
+        background-color: white;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .players-section {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .player-area {
+        flex: 1;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .player-name {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #2196F3;
+    }
+    
+    .current-card {
+        min-height: 300px;
+    }
+    
+    #battle-log {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        min-height: 150px;
+    }
+    
+    #log-content {
+        font-family: monospace;
+        font-size: 14px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    
+    .controls {
+        text-align: center;
+        margin: 20px 0;
+    }
+    
+    button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    #start-game {
+        background-color: #4CAF50;
+        color: white;
+    }
+    
+    #next-round {
+        background-color: #2196F3;
+        color: white;
+    }
+    
+    #restart-game {
+        background-color: #ff3333;
+        color: white;
+    }
+    
+	button:disabled {
+		background-color: #cccccc !important;
+		color: #888888 !important;
+		cursor: not-allowed;
+		opacity: 0.7;
+		transform: none !important;
+		box-shadow: none !important;
+	}
+    
+    .card-image {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .card-image img {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .winner {
+        border-color: #4CAF50 !important;
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+    }
+    
+    .loser {
+        opacity: 0.8;
+        border-color: #ff5252 !important;
+    }
+</style>
+<body>
+    <!-- Основной контейнер для всей игры -->
+    <div class="container">
+        <h1>Трансформеры: Прайм - Карточная Игра</h1>
+        
+		
+		
+		
+		
+		
+        <!-- Блок статуса игры -->
+        <div id="game-status">
+            <h2>Статус игры: <span id="status-text">Начало игры</span></h2>
+            <p>Игрок 1 карт: <span id="player1-count">0</span> | Игрок 2 карт: <span id="player2-count">0</span></p>
+            <p>Раунд: <span id="round">1</span></p>
+        </div>
+        <!-- Панель управления игрой -->
+        <div class="controls">
+            <!-- Основные кнопки управления игрой -->
+            <button id="start-game">Начать игру</button>
+            <button id="next-round" disabled>Следующий раунд</button>
+            <button id="restart-game" disabled>Перезапустить</button>
+        </div>
+        
+		
+		
+		
+		
+		
+        <!-- Блок выбора характеристики (скрыт по умолчанию) -->
+        <div id="category-selector">
+            <h3>Выберите характеристику для сравнения:</h3>
+            <div id="categories"></div> <!-- Сюда динамически добавляются кнопки характеристик -->
+        </div>
+        
+		
+		
+		
+		
+        <!-- Основная игровая доска -->
+        <div id="game-board">
+            <div class="players-section">
+			
+			
+                <!-- Область игрока 1 -->
+                <div class="player-area" id="player1-area">
+                    <div class="player-name">Игрок 1</div>
+                    <div class="current-card" id="player1-card">
+                        <p>Карта не выбрана</p>
+                    </div>
+                </div>
+                
+				
+				
+                <!-- Область игрока 2 -->
+                <div class="player-area" id="player2-area">
+                    <div class="player-name">Игрок 2</div>
+                    <div class="current-card" id="player2-card">
+                        <p>Карта не выбрана</p>
+                    </div>
+                </div>
+            </div>
+            
+
+    <!-- Подключение JavaScript файлов -->
+    <script src="src/data/cards.js"></script> <!-- Данные карточек -->
+    <script src="src/game.js"></script> <!-- Основная логика игры -->
+</body>
+</html>
